@@ -1,16 +1,25 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
+import { ProjectsModel } from './entities/project.entity';
 
 @Injectable()
 export class ProjectsService {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  create(_createProjectDto: CreateProjectDto) {
+  constructor(
+    @Inject(ProjectsModel)
+    public projectsModel: Repository<ProjectsModel>,
+  ) {}
+  
+  
+  create(createProjectDto: CreateProjectDto) {
+    console.log(createProjectDto);
     return 'This action adds a new project';
   }
 
   findAll() {
-    return `This action returns all projects`;
+    return [];
   }
 
   findOne(id: number) {

@@ -10,6 +10,7 @@ import {
 import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
+import { ProjectsModel } from './entities/project.entity';
 
 @Controller('/projects')
 export class ProjectsController {
@@ -21,7 +22,7 @@ export class ProjectsController {
   }
 
   @Get()
-  findAll() {
+  findAll(){
     return this.projectsService.findAll();
   }
 
